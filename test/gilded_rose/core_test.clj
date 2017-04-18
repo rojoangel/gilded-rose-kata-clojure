@@ -69,8 +69,7 @@
         (is sell-in (:sell-in (first (update-quality [sulfuras]))))))
     (testing
       "Never decreases in quality"
-      (let [quality (:quality sulfuras)]
-        (is quality (:quality (first (update-quality [sulfuras])))))))
+      (is 80 (:quality (first (update-quality [sulfuras]))))))
   (testing
     "Backstage pass"
     (testing
