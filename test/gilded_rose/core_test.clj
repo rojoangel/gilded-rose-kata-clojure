@@ -14,6 +14,10 @@
 (def aged-brie
   (item "Aged Brie" 2 0))
 
+(def topped-quality-aged-brie
+  (item "Aged Brie" 2 50))
+
+
 (deftest
   about-gilded-rose
   (testing
@@ -40,4 +44,8 @@
     (testing
       "Increases in quality the older it gets"
       (let [quality (:quality aged-brie)]
-        (is (= (inc quality) (:quality (first (update-quality [aged-brie])))))))))
+        (is (= (inc quality) (:quality (first (update-quality [aged-brie])))))))
+    (testing
+      "The quality is never more than 50"
+      (let [quality (:quality topped-quality-aged-brie)]
+        (is (= quality (:quality (first (update-quality [topped-quality-aged-brie])))))))))
