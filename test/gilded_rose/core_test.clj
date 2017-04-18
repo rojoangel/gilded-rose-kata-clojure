@@ -8,6 +8,12 @@
 (deftest
   about-gilded-rose
   (testing
-    "At the end of each day our system lowers sell-in value for an item"
-    (let [sell-in (:sell-in normal-item)]
-      (is (= (dec sell-in) (:sell-in (first (update-quality [normal-item]))))))))
+    "Normal item"
+    (testing
+      "At the end of each day our system lowers sell-in value for an item"
+      (let [sell-in (:sell-in normal-item)]
+        (is (= (dec sell-in) (:sell-in (first (update-quality [normal-item])))))))
+    (testing
+      "At the end of each day our system lowers quality value for an item"
+      (let [quality (:quality normal-item)]
+        (is (= (dec quality) (:quality (first (update-quality [normal-item])))))))))
