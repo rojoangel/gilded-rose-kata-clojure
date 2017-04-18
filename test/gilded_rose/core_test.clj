@@ -11,6 +11,9 @@
 (def zero-quality-item
   (item "+5 Dexterity Vest" 10 0))
 
+(def aged-brie
+  (item "Aged Brie" 2 0))
+
 (deftest
   about-gilded-rose
   (testing
@@ -31,4 +34,10 @@
       (testing
         "The quality of an item is never negative"
         (let [quality (:quality zero-quality-item)]
-          (is (= quality (:quality (first (update-quality [zero-quality-item]))))))))))
+          (is (= quality (:quality (first (update-quality [zero-quality-item])))))))))
+  (testing
+    "Aged Brie"
+    (testing
+      "Increases in quality the older it gets"
+      (let [quality (:quality aged-brie)]
+        (is (= (inc quality) (:quality (first (update-quality [aged-brie])))))))))
