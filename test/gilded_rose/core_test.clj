@@ -54,4 +54,8 @@
     (testing
       "Never has to be sold"
       (let [sell-in (:sell-in sulfuras)]
-        (is sell-in (:sell-in (first (update-quality [sulfuras]))))))))
+        (is sell-in (:sell-in (first (update-quality [sulfuras]))))))
+    (testing
+      "Never decreases in quality"
+      (let [quality (:quality sulfuras)]
+        (is quality (:quality (first (update-quality [sulfuras]))))))))
