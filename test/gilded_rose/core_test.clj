@@ -5,6 +5,9 @@
 (def normal-item
   (item "+5 Dexterity Vest" 10 20))
 
+(def sell-date-passed-item
+  (item "+5 Dexterity Vest" 0 20))
+
 (deftest
   about-gilded-rose
   (testing
@@ -16,4 +19,8 @@
     (testing
       "At the end of each day our system lowers quality value for an item"
       (let [quality (:quality normal-item)]
-        (is (= (dec quality) (:quality (first (update-quality [normal-item])))))))))
+        (is (= (dec quality) (:quality (first (update-quality [normal-item])))))))
+    (testing
+      "Once the sell by date has passed, quality degrades twice as fast"
+      (let [quality (:quality normal-item)]
+        (is (= (- quality 2) (:quality (first (update-quality [sell-date-passed-item])))))))))
