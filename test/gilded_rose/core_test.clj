@@ -23,6 +23,10 @@
 (def far-future-backstage-pass
   (item "Backstage passes to a TAFKAL80ETC concert" 15 20))
 
+(def near-future-backstage-pass
+  (item "Backstage passes to a TAFKAL80ETC concert" 9 20))
+
+
 (deftest
   about-gilded-rose
   (testing
@@ -67,4 +71,8 @@
     (testing
       "Increases in quality as sell in value approaches"
       (let [quality (:quality far-future-backstage-pass)]
-        (is (= (inc quality) (:quality (first (update-quality [far-future-backstage-pass])))))))))
+        (is (= (inc quality) (:quality (first (update-quality [far-future-backstage-pass])))))))
+    (testing
+      "Quality increases by 2 when sell in is 10 days or less"
+      (let [quality (:quality near-future-backstage-pass)]
+        (is (= (+ quality 2) (:quality (first (update-quality [near-future-backstage-pass])))))))))
