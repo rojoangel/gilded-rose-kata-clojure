@@ -37,8 +37,7 @@
     (comment                                                ; commenting out as this test is failing
       (testing
         "The quality of an item is never negative"
-        (let [quality (:quality zero-quality-item)]
-          (is (= quality (:quality (first (update-quality [zero-quality-item])))))))))
+        (is (= 0 (:quality (first (update-quality [zero-quality-item]))))))))
   (testing
     "Aged Brie"
     (testing
