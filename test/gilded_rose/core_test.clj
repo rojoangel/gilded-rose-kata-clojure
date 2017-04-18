@@ -28,7 +28,7 @@
         (is (= (dec quality) (:quality (first (update-quality [normal-item])))))))
     (testing
       "Once the sell by date has passed, quality degrades twice as fast"
-      (let [quality (:quality normal-item)]
+      (let [quality (:quality sell-date-passed-item)]
         (is (= (- quality 2) (:quality (first (update-quality [sell-date-passed-item])))))))
     (comment                                                ; commenting out as this test is failing
       (testing
