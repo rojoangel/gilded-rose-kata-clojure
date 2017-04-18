@@ -17,6 +17,8 @@
 (def topped-quality-aged-brie
   (item "Aged Brie" 2 50))
 
+(def sulfuras
+  (item "Sulfuras, Hand Of Ragnaros" 0 80))
 
 (deftest
   about-gilded-rose
@@ -46,4 +48,10 @@
         (is (= (inc quality) (:quality (first (update-quality [aged-brie])))))))
     (testing
       "The quality is never more than 50"
-      (is (= 50 (:quality (first (update-quality [topped-quality-aged-brie]))))))))
+      (is (= 50 (:quality (first (update-quality [topped-quality-aged-brie])))))))
+  (testing
+    "Sulfuras"
+    (testing
+      "Never has to be sold"
+      (let [sell-in (:sell-in sulfuras)]
+        (is sell-in (:sell-in (first (update-quality [sulfuras]))))))))
