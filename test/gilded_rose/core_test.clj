@@ -20,6 +20,9 @@
 (def sulfuras
   (item "Sulfuras, Hand Of Ragnaros" 0 80))
 
+(def far-future-backstage-pass
+  (item "Backstage passes to a TAFKAL80ETC concert" 15 20))
+
 (deftest
   about-gilded-rose
   (testing
@@ -58,4 +61,10 @@
     (testing
       "Never decreases in quality"
       (let [quality (:quality sulfuras)]
-        (is quality (:quality (first (update-quality [sulfuras]))))))))
+        (is quality (:quality (first (update-quality [sulfuras])))))))
+  (testing
+    "Backstage pass"
+    (testing
+      "Increases in quality as sell in value approaches"
+      (let [quality (:quality far-future-backstage-pass)]
+        (is (= (inc quality) (:quality (first (update-quality [far-future-backstage-pass])))))))))
