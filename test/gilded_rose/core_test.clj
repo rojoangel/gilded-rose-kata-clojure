@@ -47,5 +47,4 @@
         (is (= (inc quality) (:quality (first (update-quality [aged-brie])))))))
     (testing
       "The quality is never more than 50"
-      (let [quality (:quality topped-quality-aged-brie)]
-        (is (= quality (:quality (first (update-quality [topped-quality-aged-brie])))))))))
+      (is (= 50 (:quality (first (update-quality [topped-quality-aged-brie]))))))))
