@@ -28,11 +28,7 @@
     item))
 
 (defn update-inventory [items]
-  (map
-    update-quantity
-    (map
-      update-sell-in
-      items)))
+  (map (comp update-quantity update-sell-in) items))
 
 (defn item [item-name, sell-in, quality]
   {:name item-name, :sell-in sell-in, :quality quality})
