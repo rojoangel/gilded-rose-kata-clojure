@@ -27,8 +27,11 @@
     (merge item {:sell-in (dec (:sell-in item))})
     item))
 
+(def update-item
+  (comp update-quantity update-sell-in))
+
 (defn update-inventory [items]
-  (map (comp update-quantity update-sell-in) items))
+  (map update-item items))
 
 (defn item [item-name, sell-in, quality]
   {:name item-name, :sell-in sell-in, :quality quality})
