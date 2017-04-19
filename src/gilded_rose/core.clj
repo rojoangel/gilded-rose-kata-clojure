@@ -2,7 +2,7 @@
 
 (defn update-inventory [items]
   (map
-    (fn[item] (cond
+    (fn update-quantity [item] (cond
       (and (< (:sell-in item) 0) (= "Backstage passes to a TAFKAL80ETC concert" (:name item)))
         (merge item {:quality 0})
       (or (= (:name item) "Aged Brie") (= (:name item) "Backstage passes to a TAFKAL80ETC concert"))
@@ -22,7 +22,7 @@
       (or (= "+5 Dexterity Vest" (:name item)) (= "Elixir of the Mongoose" (:name item)))
         (merge item {:quality (dec (:quality item))})
       :else item))
-  (map (fn [item]
+  (map (fn update-sell-in [item]
       (if (not= "Sulfuras, Hand of Ragnaros" (:name item))
         (merge item {:sell-in (dec (:sell-in item))})
         item))
