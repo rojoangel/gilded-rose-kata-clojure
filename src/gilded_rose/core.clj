@@ -3,7 +3,7 @@
 (defn update-quantity [item]
   (cond
 
-    (= (:item-type item) :back-stage-pass)
+    (= (:item-type item) :backstage-pass)
     (if (< (:sell-in item) 0)
       (merge item {:quality 0})
       (if (< (:sell-in item) 5)
@@ -42,4 +42,4 @@
 
 ; specialized constructors
 (defn back-stage-pass [item-name sell-in quality]
-   (assoc (item item-name sell-in quality) :item-type :back-stage-pass))
+   (assoc (item item-name sell-in quality) :item-type :backstage-pass))

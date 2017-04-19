@@ -92,5 +92,5 @@
     "Specialized constructors"
     (testing
       "Backstage pass specialized constructor"
-      (is (= :back-stage-pass
+      (is (= :backstage-pass
              (:item-type (back-stage-pass "Backstage passes to a TAFKAL80ETC concert" 15 20)))))))
