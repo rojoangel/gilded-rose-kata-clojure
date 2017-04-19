@@ -23,9 +23,9 @@
     :else item))
 
 (defn update-sell-in [item]
-  (if (not= "Sulfuras, Hand of Ragnaros" (:name item))
-    (merge item {:sell-in (dec (:sell-in item))})
-    item))
+  (if (= "Sulfuras, Hand of Ragnaros" (:name item))
+    item
+    (merge item {:sell-in (dec (:sell-in item))})))
 
 (def update-item
   (comp update-quantity update-sell-in))
