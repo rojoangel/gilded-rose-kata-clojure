@@ -3,7 +3,7 @@
 (defn update-quantity [item]
   (cond
 
-    (= (:name item) "Backstage passes to a TAFKAL80ETC concert")
+    (= (:item-type item) :back-stage-pass)
     (if (< (:sell-in item) 0)
       (merge item {:quality 0})
       (if (< (:sell-in item) 5)

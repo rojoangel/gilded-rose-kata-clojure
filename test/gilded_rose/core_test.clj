@@ -21,16 +21,16 @@
   (item "Sulfuras, Hand Of Ragnaros" 0 80))
 
 (def far-future-backstage-pass
-  (item "Backstage passes to a TAFKAL80ETC concert" 15 20))
+  (back-stage-pass "Backstage passes to a TAFKAL80ETC concert" 15 20))
 
 (def near-future-backstage-pass
-  (item "Backstage passes to a TAFKAL80ETC concert" 9 20))
+  (back-stage-pass "Backstage passes to a TAFKAL80ETC concert" 9 20))
 
 (def immediate-future-backstage-pass
-  (item "Backstage passes to a TAFKAL80ETC concert" 3 20))
+  (back-stage-pass "Backstage passes to a TAFKAL80ETC concert" 3 20))
 
 (def after-concert-backstage-pass
-  (item "Backstage passes to a TAFKAL80ETC concert" 0 20))
+  (back-stage-pass "Backstage passes to a TAFKAL80ETC concert" 0 20))
 
 (deftest
   about-gilded-rose
