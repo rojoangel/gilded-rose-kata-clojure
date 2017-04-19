@@ -2,17 +2,17 @@
 
 (defn update-quantity [item]
   (cond
-    (and (< (:sell-in item) 0) (= "Backstage passes to a TAFKAL80ETC concert" (:name item)))
-    (merge item {:quality 0})
 
     (= (:name item) "Backstage passes to a TAFKAL80ETC concert")
-    (if (and (>= (:sell-in item) 5) (< (:sell-in item) 10))
-      (merge item {:quality (inc (inc (:quality item)))})
-      (if (and (>= (:sell-in item) 0) (< (:sell-in item) 5))
-        (merge item {:quality (inc (inc (inc (:quality item))))})
-        (if (< (:quality item) 50)
-          (merge item {:quality (inc (:quality item))})
-          item)))
+    (if (< (:sell-in item) 0)
+      (merge item {:quality 0})
+      (if (and (>= (:sell-in item) 5) (< (:sell-in item) 10))
+        (merge item {:quality (inc (inc (:quality item)))})
+        (if (and (>= (:sell-in item) 0) (< (:sell-in item) 5))
+          (merge item {:quality (inc (inc (inc (:quality item))))})
+          (if (< (:quality item) 50)
+            (merge item {:quality (inc (:quality item))})
+            item))))
 
     (= (:name item) "Aged Brie")
     (if (< (:quality item) 50)
