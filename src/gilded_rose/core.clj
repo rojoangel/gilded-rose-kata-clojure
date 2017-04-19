@@ -39,3 +39,7 @@
 
 (defn item [item-name, sell-in, quality]
   {:name item-name, :sell-in sell-in, :quality quality})
+
+; specialized constructors
+(defn back-stage-pass [item-name sell-in quality]
+   (assoc (item item-name sell-in quality) :item-type :back-stage-pass))

@@ -87,4 +87,10 @@
     (testing
       "Quality drops to 0 after the concert"
       (let [quality (:quality after-concert-backstage-pass)]
-        (is (= 0 (:quality (update-item after-concert-backstage-pass))))))))
+        (is (= 0 (:quality (update-item after-concert-backstage-pass)))))))
+  (testing
+    "Specialized constructors"
+    (testing
+      "Backstage pass specialized constructor"
+      (is (= :back-stage-pass
+             (:item-type (back-stage-pass "Backstage passes to a TAFKAL80ETC concert" 15 20)))))))
