@@ -6,9 +6,9 @@
     (merge item {:quality 0})
 
     (= (:name item) "Backstage passes to a TAFKAL80ETC concert")
-    (if (and (= (:name item) "Backstage passes to a TAFKAL80ETC concert") (>= (:sell-in item) 5) (< (:sell-in item) 10))
+    (if (and (>= (:sell-in item) 5) (< (:sell-in item) 10))
       (merge item {:quality (inc (inc (:quality item)))})
-      (if (and (= (:name item) "Backstage passes to a TAFKAL80ETC concert") (>= (:sell-in item) 0) (< (:sell-in item) 5))
+      (if (and (>= (:sell-in item) 0) (< (:sell-in item) 5))
         (merge item {:quality (inc (inc (inc (:quality item))))})
         (if (< (:quality item) 50)
           (merge item {:quality (inc (:quality item))})
