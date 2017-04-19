@@ -19,13 +19,10 @@
       (merge item {:quality (inc (:quality item))})
       item)
 
-    (< (:sell-in item) 0)
-    (if (or (= "+5 Dexterity Vest" (:name item)) (= "Elixir of the Mongoose" (:name item)))
-      (merge item {:quality (- (:quality item) 2)})
-      item)
-
     (or (= "+5 Dexterity Vest" (:name item)) (= "Elixir of the Mongoose" (:name item)))
-    (merge item {:quality (dec (:quality item))})
+    (if (< (:sell-in item) 0)
+      (merge item {:quality (- (:quality item) 2)})
+      (merge item {:quality (dec (:quality item))}))
 
     :else item))
 
