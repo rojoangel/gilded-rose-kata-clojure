@@ -22,14 +22,17 @@
     (merge item {:quality (dec (:quality item))})
     :else item))
 
+(defn update-sell-in [item]
+  (if (not= "Sulfuras, Hand of Ragnaros" (:name item))
+    (merge item {:sell-in (dec (:sell-in item))})
+    item))
+
 (defn update-inventory [items]
   (map
     update-quantity
-    (map (fn update-sell-in [item]
-           (if (not= "Sulfuras, Hand of Ragnaros" (:name item))
-             (merge item {:sell-in (dec (:sell-in item))})
-             item))
-         items)))
+    (map
+      update-sell-in
+      items)))
 
 (defn item [item-name, sell-in, quality]
   {:name item-name, :sell-in sell-in, :quality quality})
