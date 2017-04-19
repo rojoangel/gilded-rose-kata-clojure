@@ -27,10 +27,13 @@
     (merge item {:quality (dec (:quality item))})))
 
 
-(defn update-sell-in [item]
-  (if (= (:item-type item) :legendary)
-    item
-    (merge item {:sell-in (dec (:sell-in item))})))
+(defmulti update-sell-in :item-type)
+
+(defmethod update-sell-in :legendary [item]
+  item)
+
+(defmethod update-sell-in :default [item]
+  (merge item {:sell-in (dec (:sell-in item))}))
 
 (def update-item
   (comp update-quantity update-sell-in))
