@@ -1,6 +1,6 @@
 (ns gilded-rose.core)
 
-(defn update-quality [items]
+(defn update-inventory [items]
   (map
     (fn[item] (cond
       (and (< (:sell-in item) 0) (= "Backstage passes to a TAFKAL80ETC concert" (:name item)))
@@ -40,5 +40,5 @@
       (item "Sulfuras, Hand Of Ragnaros" 0 80)
       (item "Backstage passes to a TAFKAL80ETC concert" 15 20)
     ]]
-    (update-quality inventory)
+    (update-inventory inventory)
     ))
