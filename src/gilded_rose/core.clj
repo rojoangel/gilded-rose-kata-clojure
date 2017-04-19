@@ -19,15 +19,16 @@
       (merge item {:quality (inc (:quality item))})
       item)
 
-    (or (= "+5 Dexterity Vest" (:name item)) (= "Elixir of the Mongoose" (:name item)))
+    (= (:item-type item) :legendary)
+    item
+
+    :else
     (if (< (:sell-in item) 0)
       (merge item {:quality (- (:quality item) 2)})
-      (merge item {:quality (dec (:quality item))}))
-
-    :else item))
+      (merge item {:quality (dec (:quality item))}))))
 
 (defn update-sell-in [item]
-  (if (= "Sulfuras, Hand of Ragnaros" (:name item))
+  (if (= (:item-type item) :legendary)
     item
     (merge item {:sell-in (dec (:sell-in item))})))
 
@@ -46,3 +47,6 @@
 
 (defn aged-brie [item-name sell-in quality]
   (assoc (item item-name sell-in quality) :item-type :aged-brie))
+
+(defn legenday [item-name sell-in quality]
+  (assoc (item item-name sell-in quality) :item-type :legendary))

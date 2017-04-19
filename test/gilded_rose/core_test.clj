@@ -18,7 +18,7 @@
   (aged-brie "Aged Brie" 2 50))
 
 (def sulfuras
-  (item "Sulfuras, Hand Of Ragnaros" 0 80))
+  (legenday "Sulfuras, Hand Of Ragnaros" 0 80))
 
 (def far-future-backstage-pass
   (back-stage-pass "Backstage passes to a TAFKAL80ETC concert" 15 20))
