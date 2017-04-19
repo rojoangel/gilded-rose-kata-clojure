@@ -22,10 +22,12 @@
   item)
 
 (defmethod update-quantity :default [item]
-  (if (< (:sell-in item) 0)
-    (merge item {:quality (- (:quality item) 2)})
-    (merge item {:quality (dec (:quality item))})))
-
+  (let [new-quantity (if (< (:sell-in item) 0)
+                       (- (:quality item) 2)
+                       (dec (:quality item)))]
+    (if (< new-quantity 0)
+      (merge item {:quality 0})
+      (merge item {:quality new-quantity}))))
 
 (defmulti update-sell-in :item-type)
 

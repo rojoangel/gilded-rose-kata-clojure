@@ -48,10 +48,9 @@
       "Once the sell by date has passed, quality degrades twice as fast"
       (let [quality (:quality sell-date-passed-item)]
         (is (= (- quality 2) (:quality (update-item sell-date-passed-item))))))
-    (comment                                                ; commenting out as this test is failing
-      (testing
-        "The quality of an item is never negative"
-        (is (= 0 (:quality (update-item zero-quality-item)))))))
+    (testing
+      "The quality of an item is never negative"
+      (is (= 0 (:quality (update-item zero-quality-item))))))
   (testing
     "Aged Brie"
     (testing
