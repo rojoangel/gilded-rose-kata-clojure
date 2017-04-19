@@ -39,52 +39,52 @@
     (testing
       "At the end of each day our system lowers sell-in value for an item"
       (let [sell-in (:sell-in normal-item)]
-        (is (= (dec sell-in) (:sell-in (first (update-inventory [normal-item])))))))
+        (is (= (dec sell-in) (:sell-in (update-item normal-item))))))
     (testing
       "At the end of each day our system lowers quality value for an item"
       (let [quality (:quality normal-item)]
-        (is (= (dec quality) (:quality (first (update-inventory [normal-item])))))))
+        (is (= (dec quality) (:quality (update-item normal-item))))))
     (testing
       "Once the sell by date has passed, quality degrades twice as fast"
       (let [quality (:quality sell-date-passed-item)]
-        (is (= (- quality 2) (:quality (first (update-inventory [sell-date-passed-item])))))))
+        (is (= (- quality 2) (:quality (update-item sell-date-passed-item))))))
     (comment                                                ; commenting out as this test is failing
       (testing
         "The quality of an item is never negative"
-        (is (= 0 (:quality (first (update-inventory [zero-quality-item]))))))))
+        (is (= 0 (:quality (update-item zero-quality-item)))))))
   (testing
     "Aged Brie"
     (testing
       "Increases in quality the older it gets"
       (let [quality (:quality aged-brie)]
-        (is (= (inc quality) (:quality (first (update-inventory [aged-brie])))))))
+        (is (= (inc quality) (:quality (update-item aged-brie))))))
     (testing
       "The quality is never more than 50"
-      (is (= 50 (:quality (first (update-inventory [topped-quality-aged-brie])))))))
+      (is (= 50 (:quality (update-item topped-quality-aged-brie))))))
   (testing
     "Sulfuras"
     (testing
       "Never has to be sold"
       (let [sell-in (:sell-in sulfuras)]
-        (is sell-in (:sell-in (first (update-inventory [sulfuras]))))))
+        (is sell-in (:sell-in (update-item sulfuras)))))
     (testing
       "Never decreases in quality"
-      (is 80 (:quality (first (update-inventory [sulfuras]))))))
+      (is 80 (:quality (update-item sulfuras)))))
   (testing
     "Backstage pass"
     (testing
       "Increases in quality as sell in value approaches"
       (let [quality (:quality far-future-backstage-pass)]
-        (is (= (inc quality) (:quality (first (update-inventory [far-future-backstage-pass])))))))
+        (is (= (inc quality) (:quality (update-item far-future-backstage-pass))))))
     (testing
       "Quality increases by 2 when sell in is 10 days or less"
       (let [quality (:quality near-future-backstage-pass)]
-        (is (= (+ quality 2) (:quality (first (update-inventory [near-future-backstage-pass])))))))
+        (is (= (+ quality 2) (:quality (update-item near-future-backstage-pass))))))
     (testing
       "Quality increases by 3 when sell in is 5 days or less"
       (let [quality (:quality immediate-future-backstage-pass)]
-        (is (= (+ quality 3) (:quality (first (update-inventory [immediate-future-backstage-pass])))))))
+        (is (= (+ quality 3) (:quality (update-item immediate-future-backstage-pass))))))
     (testing
       "Quality drops to 0 after the concert"
       (let [quality (:quality after-concert-backstage-pass)]
-        (is (= 0 (:quality (first (update-inventory [after-concert-backstage-pass])))))))))
+        (is (= 0 (:quality (update-item after-concert-backstage-pass))))))))
