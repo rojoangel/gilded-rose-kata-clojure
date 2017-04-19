@@ -11,11 +11,11 @@
 (def zero-quality-item
   (item "+5 Dexterity Vest" 10 0))
 
-(def aged-brie
-  (item "Aged Brie" 2 0))
+(def standard-quality-aged-brie
+  (aged-brie "Aged Brie" 2 0))
 
 (def topped-quality-aged-brie
-  (item "Aged Brie" 2 50))
+  (aged-brie "Aged Brie" 2 50))
 
 (def sulfuras
   (item "Sulfuras, Hand Of Ragnaros" 0 80))
@@ -56,8 +56,8 @@
     "Aged Brie"
     (testing
       "Increases in quality the older it gets"
-      (let [quality (:quality aged-brie)]
-        (is (= (inc quality) (:quality (update-item aged-brie))))))
+      (let [quality (:quality standard-quality-aged-brie)]
+        (is (= (inc quality) (:quality (update-item standard-quality-aged-brie))))))
     (testing
       "The quality is never more than 50"
       (is (= 50 (:quality (update-item topped-quality-aged-brie))))))

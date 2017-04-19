@@ -14,7 +14,7 @@
             (merge item {:quality (inc (:quality item))})
             item))))
 
-    (= (:name item) "Aged Brie")
+    (= (:item-type item) :aged-brie)
     (if (< (:quality item) 50)
       (merge item {:quality (inc (:quality item))})
       item)
@@ -42,4 +42,7 @@
 
 ; specialized constructors
 (defn back-stage-pass [item-name sell-in quality]
-   (assoc (item item-name sell-in quality) :item-type :backstage-pass))
+  (assoc (item item-name sell-in quality) :item-type :backstage-pass))
+
+(defn aged-brie [item-name sell-in quality]
+  (assoc (item item-name sell-in quality) :item-type :aged-brie))
