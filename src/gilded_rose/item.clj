@@ -50,5 +50,5 @@
 (defn aged-brie [item-name sell-in quality]
   (assoc (item item-name sell-in quality) :item-type :aged-brie))
 
-(defn legenday [item-name sell-in quality]
+(defn legendary [item-name sell-in quality]
   (assoc (item item-name sell-in quality) :item-type :legendary))
