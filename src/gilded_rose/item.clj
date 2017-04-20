@@ -1,7 +1,6 @@
 (ns gilded-rose.item
   (:require [gilded-rose.attribute :as attribute]))
 
-;; update-quality multi-method
 (defmulti update-quality :item-type)
 
 (defmethod update-quality :backstage-pass [item]
