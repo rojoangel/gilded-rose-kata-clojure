@@ -6,27 +6,27 @@
 (defmethod update-quality :backstage-pass [item]
   (cond
     (< (:sell-in item) 0)
-    (attribute/update-quality-value item 0)
+    (attribute/update-quality item 0)
 
     (< (:sell-in item) 5)
-    (attribute/update-quality-value item (inc (inc (inc (:quality item)))))
+    (attribute/update-quality item (inc (inc (inc (:quality item)))))
 
     (< (:sell-in item) 10)
-    (attribute/update-quality-value item (inc (inc (:quality item))))
+    (attribute/update-quality item (inc (inc (:quality item))))
 
     :else
-    (attribute/update-quality-value item (inc (:quality item)))))
+    (attribute/update-quality item (inc (:quality item)))))
 
 (defmethod update-quality :aged-brie [item]
-  (attribute/update-quality-value item (inc (:quality item))))
+  (attribute/update-quality item (inc (:quality item))))
 
 (defmethod update-quality :legendary [item]
   item)
 
 (defmethod update-quality :default [item]
   (if (< (:sell-in item) 0)
-    (attribute/update-quality-value item (dec (dec (:quality item))))
-    (attribute/update-quality-value item (dec (:quality item)))))
+    (attribute/update-quality item (dec (dec (:quality item))))
+    (attribute/update-quality item (dec (:quality item)))))
 
 (defmulti update-sell-in :item-type)
 
@@ -34,7 +34,7 @@
   item)
 
 (defmethod update-sell-in :default [item]
-  (attribute/update-sell-in-value item (dec (:sell-in item))))
+  (attribute/update-sell-in item (dec (:sell-in item))))
 
 (def update-item
   (comp update-quality update-sell-in))
