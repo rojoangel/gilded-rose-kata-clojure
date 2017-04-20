@@ -40,10 +40,9 @@
   item)
 
 (defmethod update-quality :default [item]
-  (let [new-quality (if (< (:sell-in item) 0)
-                      (- (:quality item) 2)
-                      (dec (:quality item)))]
-    (update-quality-value item new-quality)))
+  (if (< (:sell-in item) 0)
+    (update-quality-value item (dec (dec (:quality item))))
+    (update-quality-value item (dec (:quality item)))))
 
 (defmulti update-sell-in :item-type)
 
