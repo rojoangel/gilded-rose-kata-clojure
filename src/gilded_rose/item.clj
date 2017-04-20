@@ -24,6 +24,11 @@
 (defmethod update-quality :legendary [item]
   item)
 
+(defmethod update-quality :conjured [item]
+  (if (< (:sell-in item) 0)
+    (attribute/update-quality item (dec (dec (dec (dec (:quality item))))))
+    (attribute/update-quality item (dec (dec (:quality item))))))
+
 (defmethod update-quality :default [item]
   (if (< (:sell-in item) 0)
     (attribute/update-quality item (dec (dec (:quality item))))

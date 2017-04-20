@@ -6,6 +6,7 @@
    "Elixir of the Mongoose" :normal
    "Sulfuras, Hand of Ragnaros" :legendary
    "Backstage passes to a TAFKAL80ETC concert" :backstage-pass
+   "Conjured Potion" :conjured
    })
 
 (defn item->type [item]
