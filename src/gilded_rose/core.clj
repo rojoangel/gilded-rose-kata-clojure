@@ -1,33 +1,42 @@
 (ns gilded-rose.core)
 
+(defn update-attribute-value [item attribute value]
+  (merge item {attribute value}))
+
+(defn update-quality-value [item value]
+  (update-attribute-value item :quality value))
+
+(defn update-sell-in-value [item value]
+  (update-attribute-value item :sell-in value))
+
 (defmulti update-quality :item-type)
 
 (defmethod update-quality :backstage-pass [item]
   (if (< (:sell-in item) 0)
-    (merge item {:quality 0})
+    (update-quality-value item 0)
     (if (< (:sell-in item) 5)
-      (merge item {:quality (inc (inc (inc (:quality item))))})
+      (update-quality-value item (inc (inc (inc (:quality item)))))
       (if (< (:sell-in item) 10)
-        (merge item {:quality (inc (inc (:quality item)))})
+        (update-quality-value item (inc (inc (:quality item))))
         (if (< (:quality item) 50)
-          (merge item {:quality (inc (:quality item))})
+          (update-quality-value item (inc (:quality item)))
           item)))))
 
 (defmethod update-quality :aged-brie [item]
   (if (< (:quality item) 50)
-    (merge item {:quality (inc (:quality item))})
+    (update-quality-value item (inc (:quality item)))
     item))
 
 (defmethod update-quality :legendary [item]
   item)
 
 (defmethod update-quality :default [item]
-  (let [new-quantity (if (< (:sell-in item) 0)
+  (let [new-quality (if (< (:sell-in item) 0)
                        (- (:quality item) 2)
                        (dec (:quality item)))]
-    (if (< new-quantity 0)
-      (merge item {:quality 0})
-      (merge item {:quality new-quantity}))))
+    (if (< new-quality 0)
+      (update-quality-value item 0)
+      (update-quality-value item new-quality))))
 
 (defmulti update-sell-in :item-type)
 
@@ -35,7 +44,7 @@
   item)
 
 (defmethod update-sell-in :default [item]
-  (merge item {:sell-in (dec (:sell-in item))}))
+  (update-sell-in-value item (dec (:sell-in item))))
 
 (def update-item
   (comp update-quality update-sell-in))
