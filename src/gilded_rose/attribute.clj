@@ -1,6 +1,6 @@
 (ns gilded-rose.attribute)
 
-(defn update-value [item attribute value]
+(defn- update-value [item attribute value]
   (merge item {attribute value}))
 
 (defn update-quality [item value]
