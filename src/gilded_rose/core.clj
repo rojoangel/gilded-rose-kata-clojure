@@ -4,7 +4,15 @@
   (merge item {attribute value}))
 
 (defn update-quality-value [item value]
-  (update-attribute-value item :quality value))
+  (cond
+    (< value 0)
+    (update-attribute-value item :quality 0)
+
+    (> value 50)
+    (update-attribute-value item :quality 50)
+
+    :else
+    (update-attribute-value item :quality value)))
 
 (defn update-sell-in-value [item value]
   (update-attribute-value item :sell-in value))
@@ -38,11 +46,9 @@
 
 (defmethod update-quality :default [item]
   (let [new-quality (if (< (:sell-in item) 0)
-                       (- (:quality item) 2)
-                       (dec (:quality item)))]
-    (if (< new-quality 0)
-      (update-quality-value item 0)
-      (update-quality-value item new-quality))))
+                      (- (:quality item) 2)
+                      (dec (:quality item)))]
+    (update-quality-value item new-quality)))
 
 (defmulti update-sell-in :item-type)
 
