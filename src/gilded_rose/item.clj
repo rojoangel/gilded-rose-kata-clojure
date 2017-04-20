@@ -1,48 +1,32 @@
-(ns gilded-rose.item)
-
-(defn update-attribute-value [item attribute value]
-  (merge item {attribute value}))
-
-(defn update-quality-value [item value]
-  (cond
-    (< value 0)
-    (update-attribute-value item :quality 0)
-
-    (> value 50)
-    (update-attribute-value item :quality 50)
-
-    :else
-    (update-attribute-value item :quality value)))
-
-(defn update-sell-in-value [item value]
-  (update-attribute-value item :sell-in value))
+(ns gilded-rose.item
+  (:require [gilded-rose.attribute :as attribute]))
 
 (defmulti update-quality :item-type)
 
 (defmethod update-quality :backstage-pass [item]
   (cond
     (< (:sell-in item) 0)
-    (update-quality-value item 0)
+    (attribute/update-quality-value item 0)
 
     (< (:sell-in item) 5)
-    (update-quality-value item (inc (inc (inc (:quality item)))))
+    (attribute/update-quality-value item (inc (inc (inc (:quality item)))))
 
     (< (:sell-in item) 10)
-    (update-quality-value item (inc (inc (:quality item))))
+    (attribute/update-quality-value item (inc (inc (:quality item))))
 
     :else
-    (update-quality-value item (inc (:quality item)))))
+    (attribute/update-quality-value item (inc (:quality item)))))
 
 (defmethod update-quality :aged-brie [item]
-  (update-quality-value item (inc (:quality item))))
+  (attribute/update-quality-value item (inc (:quality item))))
 
 (defmethod update-quality :legendary [item]
   item)
 
 (defmethod update-quality :default [item]
   (if (< (:sell-in item) 0)
-    (update-quality-value item (dec (dec (:quality item))))
-    (update-quality-value item (dec (:quality item)))))
+    (attribute/update-quality-value item (dec (dec (:quality item))))
+    (attribute/update-quality-value item (dec (:quality item)))))
 
 (defmulti update-sell-in :item-type)
 
@@ -50,7 +34,7 @@
   item)
 
 (defmethod update-sell-in :default [item]
-  (update-sell-in-value item (dec (:sell-in item))))
+  (attribute/update-sell-in-value item (dec (:sell-in item))))
 
 (def update-item
   (comp update-quality update-sell-in))
