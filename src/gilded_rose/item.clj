@@ -1,18 +1,8 @@
 (ns gilded-rose.item
-  (:require [gilded-rose.attribute :as attribute]))
+  (:require [gilded-rose.attribute :as attribute]
+            [gilded-rose.inventory :as inventory]))
 
-(def inventory
-  {"+5 Dexterity Vest" :normal
-   "Aged Brie" :aged-brie
-   "Elixir of the Mongoose" :normal
-   "Sulfuras, Hand of Ragnaros" :legendary
-   "Backstage passes to a TAFKAL80ETC concert" :backstage-pass
-   })
-
-(defn- item->type [item]
-  (get inventory (:name item)))
-
-(defmulti update-quality item->type)
+(defmulti update-quality inventory/item->type)
 
 (defmethod update-quality :backstage-pass [item]
   (cond
@@ -39,7 +29,7 @@
     (attribute/update-quality item (dec (dec (:quality item))))
     (attribute/update-quality item (dec (:quality item)))))
 
-(defmulti update-sell-in item->type)
+(defmulti update-sell-in inventory/item->type)
 
 (defmethod update-sell-in :legendary [item]
   item)
