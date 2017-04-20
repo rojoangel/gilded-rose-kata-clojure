@@ -12,25 +12,25 @@
   (item "+5 Dexterity Vest" 10 0))
 
 (def standard-quality-aged-brie
-  (aged-brie "Aged Brie" 2 0))
+  (item "Aged Brie" 2 0))
 
 (def topped-quality-aged-brie
-  (aged-brie "Aged Brie" 2 50))
+  (item "Aged Brie" 2 50))
 
 (def sulfuras
-  (legendary "Sulfuras, Hand Of Ragnaros" 0 80))
+  (item "Sulfuras, Hand Of Ragnaros" 0 80))
 
 (def far-future-backstage-pass
-  (backstage-pass "Backstage passes to a TAFKAL80ETC concert" 15 20))
+  (item "Backstage passes to a TAFKAL80ETC concert" 15 20))
 
 (def near-future-backstage-pass
-  (backstage-pass "Backstage passes to a TAFKAL80ETC concert" 9 20))
+  (item "Backstage passes to a TAFKAL80ETC concert" 9 20))
 
 (def immediate-future-backstage-pass
-  (backstage-pass "Backstage passes to a TAFKAL80ETC concert" 3 20))
+  (item "Backstage passes to a TAFKAL80ETC concert" 3 20))
 
 (def after-concert-backstage-pass
-  (backstage-pass "Backstage passes to a TAFKAL80ETC concert" 0 20))
+  (item "Backstage passes to a TAFKAL80ETC concert" 0 20))
 
 (deftest
   about-gilded-rose-items
