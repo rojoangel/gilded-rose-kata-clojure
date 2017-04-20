@@ -39,7 +39,7 @@
     (attribute/update-quality item (dec (dec (:quality item))))
     (attribute/update-quality item (dec (:quality item)))))
 
-(defmulti update-sell-in :item-type)
+(defmulti update-sell-in item->type)
 
 (defmethod update-sell-in :legendary [item]
   item)
