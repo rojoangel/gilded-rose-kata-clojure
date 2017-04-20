@@ -12,15 +12,21 @@
 (defmulti update-quality :item-type)
 
 (defmethod update-quality :backstage-pass [item]
-  (if (< (:sell-in item) 0)
+  (cond
+    (< (:sell-in item) 0)
     (update-quality-value item 0)
-    (if (< (:sell-in item) 5)
-      (update-quality-value item (inc (inc (inc (:quality item)))))
-      (if (< (:sell-in item) 10)
-        (update-quality-value item (inc (inc (:quality item))))
-        (if (< (:quality item) 50)
-          (update-quality-value item (inc (:quality item)))
-          item)))))
+
+    (< (:sell-in item) 5)
+    (update-quality-value item (inc (inc (inc (:quality item)))))
+
+    (< (:sell-in item) 10)
+    (update-quality-value item (inc (inc (:quality item))))
+
+    (< (:quality item) 50)
+    (update-quality-value item (inc (:quality item)))
+
+    :else
+    item))
 
 (defmethod update-quality :aged-brie [item]
   (if (< (:quality item) 50)
