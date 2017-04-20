@@ -1,6 +1,6 @@
-(ns gilded-rose.core-test
+(ns gilded-rose.inventory-test
   (:require [clojure.test :refer :all]
-            [gilded-rose.core :refer :all]))
+            [gilded-rose.inventory :refer :all]))
 
 (def normal-item
   (item "+5 Dexterity Vest" 10 20))

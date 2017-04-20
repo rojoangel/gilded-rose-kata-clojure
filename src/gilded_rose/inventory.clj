@@ -1,4 +1,4 @@
-(ns gilded-rose.core)
+(ns gilded-rose.inventory)
 
 (defn update-attribute-value [item attribute value]
   (merge item {attribute value}))
