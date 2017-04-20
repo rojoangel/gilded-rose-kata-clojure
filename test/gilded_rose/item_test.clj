@@ -1,6 +1,6 @@
 (ns gilded-rose.item-test
   (:require [clojure.test :refer :all]
-            [gilded-rose.item :as item :refer [item aged-brie legendary backstage-pass]]))
+            [gilded-rose.item :as item :refer [item]]))
 
 (def normal-item
   (item "+5 Dexterity Vest" 10 20))
@@ -86,10 +86,4 @@
     (testing
       "Quality drops to 0 after the concert"
       (let [quality (:quality after-concert-backstage-pass)]
-        (is (= 0 (:quality (item/update after-concert-backstage-pass)))))))
-  (testing
-    "Specialized constructors"
-    (testing
-      "Backstage pass specialized constructor"
-      (is (= :backstage-pass
-             (:item-type (backstage-pass "Backstage passes to a TAFKAL80ETC concert" 15 20)))))))
+        (is (= 0 (:quality (item/update after-concert-backstage-pass))))))))

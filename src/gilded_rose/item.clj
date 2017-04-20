@@ -52,13 +52,3 @@
 
 (defn item [item-name, sell-in, quality]
   {:name item-name, :sell-in sell-in, :quality quality})
-
-; specialized constructors
-(defn backstage-pass [item-name sell-in quality]
-  (assoc (item item-name sell-in quality) :item-type :backstage-pass))
-
-(defn aged-brie [item-name sell-in quality]
-  (assoc (item item-name sell-in quality) :item-type :aged-brie))
-
-(defn legendary [item-name sell-in quality]
-  (assoc (item item-name sell-in quality) :item-type :legendary))
