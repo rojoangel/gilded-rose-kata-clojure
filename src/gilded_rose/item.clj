@@ -44,7 +44,7 @@
   {:name item-name, :sell-in sell-in, :quality quality})
 
 ; specialized constructors
-(defn back-stage-pass [item-name sell-in quality]
+(defn backstage-pass [item-name sell-in quality]
   (assoc (item item-name sell-in quality) :item-type :backstage-pass))
 
 (defn aged-brie [item-name sell-in quality]

@@ -1,6 +1,6 @@
 (ns gilded-rose.item-test
   (:require [clojure.test :refer :all]
-            [gilded-rose.item :as item :refer [item aged-brie legendary back-stage-pass]]))
+            [gilded-rose.item :as item :refer [item aged-brie legendary backstage-pass]]))
 
 (def normal-item
   (item "+5 Dexterity Vest" 10 20))
@@ -21,16 +21,16 @@
   (legendary "Sulfuras, Hand Of Ragnaros" 0 80))
 
 (def far-future-backstage-pass
-  (back-stage-pass "Backstage passes to a TAFKAL80ETC concert" 15 20))
+  (backstage-pass "Backstage passes to a TAFKAL80ETC concert" 15 20))
 
 (def near-future-backstage-pass
-  (back-stage-pass "Backstage passes to a TAFKAL80ETC concert" 9 20))
+  (backstage-pass "Backstage passes to a TAFKAL80ETC concert" 9 20))
 
 (def immediate-future-backstage-pass
-  (back-stage-pass "Backstage passes to a TAFKAL80ETC concert" 3 20))
+  (backstage-pass "Backstage passes to a TAFKAL80ETC concert" 3 20))
 
 (def after-concert-backstage-pass
-  (back-stage-pass "Backstage passes to a TAFKAL80ETC concert" 0 20))
+  (backstage-pass "Backstage passes to a TAFKAL80ETC concert" 0 20))
 
 (deftest
   about-gilded-rose
@@ -92,4 +92,4 @@
     (testing
       "Backstage pass specialized constructor"
       (is (= :backstage-pass
-             (:item-type (back-stage-pass "Backstage passes to a TAFKAL80ETC concert" 15 20)))))))
+             (:item-type (backstage-pass "Backstage passes to a TAFKAL80ETC concert" 15 20)))))))
