@@ -1,4 +1,4 @@
-(ns gilded-rose.inventory
+(ns gilded-rose.core
   (:require [gilded-rose.item :as item]))
 
 (defn update-inventory [items]
