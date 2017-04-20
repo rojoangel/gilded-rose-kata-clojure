@@ -47,7 +47,7 @@
 (defmethod update-sell-in :default [item]
   (attribute/update-sell-in item (dec (:sell-in item))))
 
-(def update
+(def age
   (comp update-quality update-sell-in))
 
 (defn item [item-name, sell-in, quality]
