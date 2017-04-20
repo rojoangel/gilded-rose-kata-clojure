@@ -30,16 +30,11 @@
     (< (:sell-in item) 10)
     (update-quality-value item (inc (inc (:quality item))))
 
-    (< (:quality item) 50)
-    (update-quality-value item (inc (:quality item)))
-
     :else
-    item))
+    (update-quality-value item (inc (:quality item)))))
 
 (defmethod update-quality :aged-brie [item]
-  (if (< (:quality item) 50)
-    (update-quality-value item (inc (:quality item)))
-    item))
+  (update-quality-value item (inc (:quality item))))
 
 (defmethod update-quality :legendary [item]
   item)
