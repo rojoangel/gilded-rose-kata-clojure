@@ -1,6 +1,7 @@
 (ns gilded-rose.item
   (:require [gilded-rose.attribute :as attribute]))
 
+;; update-quality multi-method
 (defmulti update-quality :item-type)
 
 (defmethod update-quality :backstage-pass [item]
@@ -36,7 +37,7 @@
 (defmethod update-sell-in :default [item]
   (attribute/update-sell-in item (dec (:sell-in item))))
 
-(def update-item
+(def update
   (comp update-quality update-sell-in))
 
 (defn item [item-name, sell-in, quality]
