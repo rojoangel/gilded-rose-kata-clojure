@@ -33,7 +33,7 @@
   (backstage-pass "Backstage passes to a TAFKAL80ETC concert" 0 20))
 
 (deftest
-  about-gilded-rose
+  about-gilded-rose-items
   (testing
     "Normal item"
     (testing
