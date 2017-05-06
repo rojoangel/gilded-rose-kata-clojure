@@ -47,6 +47,3 @@
 
 (defn item [item-name, sell-in, quality]
   {:name item-name, :sell-in sell-in, :quality quality})
-
-(defn conjure [item]
-  (assoc item :conjured true))
