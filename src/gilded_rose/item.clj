@@ -1,6 +1,7 @@
 (ns gilded-rose.item
   (:require [gilded-rose.attribute :as attribute]
-            [gilded-rose.inventory :as inventory]))
+            [gilded-rose.inventory :as inventory]
+            [gilded-rose.conjured :as conjured :refer [conjured?]]))
 
 (defmulti update-quality inventory/item->type)
 
@@ -42,8 +43,13 @@
 (defmethod update-sell-in :default [item]
   (attribute/update-sell-in item (dec (:sell-in item))))
 
-(def age
-  (comp update-quality update-sell-in))
+(defmulti age conjured?)
+
+(defmethod age true [item]
+  ((comp update-quality update-quality update-sell-in) item))
+
+(defmethod age :default [item]
+  ((comp update-quality update-sell-in) item))
 
 (defn item [item-name, sell-in, quality]
   {:name item-name, :sell-in sell-in, :quality quality})
