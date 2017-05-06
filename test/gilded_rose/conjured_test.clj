@@ -1,14 +1,13 @@
 (ns gilded-rose.conjured-test
   (:require [clojure.test :refer :all]
             [gilded-rose.conjured :refer :all]
-            [gilded-rose.inventory :as inventory]
-            [gilded-rose.item :as item :refer [item]]))
+            [gilded-rose.inventory :as inventory]))
 
 (def conjured-item
-  (conjure (item "Potion" 12 33)))
+  (conjure "Potion" 12 33))
 
 (def sell-date-passed-conjured-item
-  (conjure (item "Potion" 0 33)))
+  (conjure "Potion" 0 33))
 
 (deftest
   about-conjured-item
