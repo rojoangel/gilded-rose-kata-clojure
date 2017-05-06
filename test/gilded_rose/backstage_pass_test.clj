@@ -1,4 +1,4 @@
-(ns gilded-rose.inventory-test
+(ns gilded-rose.backstage-pass-test
   (:require [clojure.test :refer :all]
             [gilded-rose.inventory :refer :all]
             [gilded-rose.item :as item :refer [item]]))
