@@ -24,6 +24,8 @@
 (def after-concert-conjured-backstage-pass
   (conjure "Backstage passes to a TAFKAL80ETC concert" 0 20))
 
+(def conjured-sulfuras
+  (conjure "Sulfuras, Hand Of Ragnaros" 0 80))
 
 (deftest
   about-conjured-item
@@ -60,4 +62,9 @@
     (testing
       "Quality drops to 0 after the concert"
       (let [quality (:quality after-concert-conjured-backstage-pass)]
-        (is (= 0 (:quality (inventory/age after-concert-conjured-backstage-pass))))))))
+        (is (= 0 (:quality (inventory/age after-concert-conjured-backstage-pass)))))))
+  (testing
+    "Conjured Legendary"
+    (testing
+      "Never decreases in quality"
+      (is 80 (:quality (inventory/age conjured-sulfuras))))))
