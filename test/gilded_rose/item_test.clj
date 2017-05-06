@@ -1,6 +1,6 @@
 (ns gilded-rose.item-test
   (:require [clojure.test :refer :all]
-            [gilded-rose.item :as item :refer [item]]))
+            [gilded-rose.item :as item :refer [item conjure]]))
 
 (def normal-item
   (item "+5 Dexterity Vest" 10 20))
@@ -33,10 +33,10 @@
   (item "Backstage passes to a TAFKAL80ETC concert" 0 20))
 
 (def conjured-item
-  (item "Conjured Potion" 12 33))
+  (conjure (item "Potion" 12 33)))
 
 (def sell-date-passed-conjured-item
-  (item "Conjured Potion" 0 33))
+  (conjure (item "Potion" 0 33)))
 
 (deftest
   about-gilded-rose-items
