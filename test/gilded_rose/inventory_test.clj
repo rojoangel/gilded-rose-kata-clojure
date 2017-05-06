@@ -3,8 +3,6 @@
             [gilded-rose.inventory :refer :all]
             [gilded-rose.item :as item :refer [item]]))
 
-(def sulfuras
-  (item "Sulfuras, Hand Of Ragnaros" 0 80))
 
 (def far-future-backstage-pass
   (item "Backstage passes to a TAFKAL80ETC concert" 15 20))
@@ -20,15 +18,6 @@
 
 (deftest
   about-gilded-rose-items
-  (testing
-    "Sulfuras"
-    (testing
-      "Never has to be sold"
-      (let [sell-in (:sell-in sulfuras)]
-        (is sell-in (:sell-in (age sulfuras)))))
-    (testing
-      "Never decreases in quality"
-      (is 80 (:quality (age sulfuras)))))
   (testing
     "Backstage pass"
     (testing
