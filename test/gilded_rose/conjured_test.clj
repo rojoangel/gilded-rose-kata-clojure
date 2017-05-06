@@ -3,10 +3,10 @@
             [gilded-rose.conjured :refer :all]
             [gilded-rose.inventory :as inventory]))
 
-(def conjured-item
+(def normal-conjured-item
   (conjure "Potion" 12 33))
 
-(def sell-date-passed-conjured-item
+(def sell-date-passed-normal-conjured-item
   (conjure "Potion" 0 33))
 
 (deftest
@@ -14,10 +14,10 @@
   (testing
     "Conjured"
     (testing
-      "Degrade in quality twice as fast as normal items"
-      (let [quality (:quality conjured-item)]
-        (is (= (- quality 2) (:quality (inventory/age conjured-item))))))
+      "Normal item degrades in quality twice as fast as normal items"
+      (let [quality (:quality normal-conjured-item)]
+        (is (= (- quality 2) (:quality (inventory/age normal-conjured-item))))))
     (testing
-      "Once the sell by date has passed, quality degrades twice as fast"
-      (let [quality (:quality sell-date-passed-conjured-item)]
-        (is (= (- quality 4) (:quality (inventory/age sell-date-passed-conjured-item))))))))
+      "Once the sell by date has passed, normal item quality degrades twice as fast"
+      (let [quality (:quality sell-date-passed-normal-conjured-item)]
+        (is (= (- quality 4) (:quality (inventory/age sell-date-passed-normal-conjured-item))))))))
