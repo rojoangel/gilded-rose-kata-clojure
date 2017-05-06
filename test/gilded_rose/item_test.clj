@@ -1,6 +1,6 @@
 (ns gilded-rose.item-test
   (:require [clojure.test :refer :all]
-            [gilded-rose.item :as item :refer [item conjure]]))
+            [gilded-rose.item :as item :refer [item]]))
 
 (def normal-item
   (item "+5 Dexterity Vest" 10 20))
@@ -31,12 +31,6 @@
 
 (def after-concert-backstage-pass
   (item "Backstage passes to a TAFKAL80ETC concert" 0 20))
-
-(def conjured-item
-  (conjure (item "Potion" 12 33)))
-
-(def sell-date-passed-conjured-item
-  (conjure (item "Potion" 0 33)))
 
 (deftest
   about-gilded-rose-items
@@ -92,14 +86,4 @@
     (testing
       "Quality drops to 0 after the concert"
       (let [quality (:quality after-concert-backstage-pass)]
-        (is (= 0 (:quality (item/age after-concert-backstage-pass)))))))
-  (testing
-    "Conjured"
-    (testing
-      "Degrade in quality twice as fast as normal items"
-      (let [quality (:quality conjured-item)]
-        (is (= (- quality 2) (:quality (item/age conjured-item))))))
-    (testing
-      "Once the sell by date has passed, quality degrades twice as fast"
-      (let [quality (:quality sell-date-passed-conjured-item)]
-        (is (= (- quality 4) (:quality (item/age sell-date-passed-conjured-item))))))))
+        (is (= 0 (:quality (item/age after-concert-backstage-pass))))))))
